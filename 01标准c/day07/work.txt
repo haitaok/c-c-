@@ -1,0 +1,5 @@
+1.宏 给数组排序 从小到达 参数决定 sort(a,>) 用指针 整形数组 sizeof（a）/sizeof(*a)
+2.宏函数 HIBYTE（short）取的高字节 LOBYTE（sn） 底子节 HIWORD（n）int高为字节 LOWORD（n）移位
+3.INT(b1,b2,b3,b4) char构造成整数
+4.运行时把自己的把c程序打印到屏幕
+
