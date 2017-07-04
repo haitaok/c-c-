@@ -23,12 +23,13 @@ void sort(double a[],int n,int (*p)(double,double)){
 }
 
 //int (*x(void(*p)()))(char)//遇到第一个名字 是这个表达是主要名称
-//typedef void (*T)();
-//typedef int (*U)(char)
-//U x(T p);
+typedef void (*T)();
+typedef int (*U)(char);
+U test2(T p){
+} 
 
-int*(char) test(void(*p)()){
-	
+int(*test())(char){
+	printf("%d\n",1);	
 }
 
 void input(double a[],int n){
@@ -54,7 +55,12 @@ int main(){
 	input(a,10);
 	sort(a,10,&rule2);
 	show(a,10);
-	int (*x(void(*p)()))(char);
-	x=&test;
+	int (*(*x)())(char);
+	//x=&test;
+	//U x(T p);
+	x = test;
+	x();
+	U (*y)(T p);
+	y=test2;
 	return 0;
 }
