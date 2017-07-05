@@ -7,7 +7,7 @@ int main(){
 	int age;
 	char name[20];
 	double salary;
-	const char* str="20furong20000";
+	const char* str="20 furong 20000";
 	sscanf(str,"%d%s%lf",&age,&name,&salary);
 	printf("我是%s,今年%d,月新%g\n",name,age,salary);
 	return 0;
