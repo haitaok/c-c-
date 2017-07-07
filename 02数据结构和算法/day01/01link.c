@@ -18,6 +18,7 @@ int main(){
 	thd.p_next=NULL;
 	forth.num=7;
 	forth.p_next=NULL;
+	//在链表最后一个增加一个子节点
 	for(p_node=&head;p_node;p_node=p_node->p_next){
 		node* p_tmp=p_node->p_next;
 		if(!p_tmp){
@@ -25,15 +26,21 @@ int main(){
 			break;
 		}
 	}
-	node* p_tmp=NULL;
+	//删除尾节点
 	for(p_node=&head;p_node;p_node=p_node->p_next){
-		if(p_node->p_next){
-			p_tmp=p_node;
-		}else{
-			p_tmp->p_next=NULL;
+		node *p_tmp=p_node->p_next;
+		if(p_tmp&&!(p_tmp->p_next)){
+			p_node->p_next=NULL;
 		}
 	}
-	
+	//摘除一节点
+	if(head.p_next){
+		head.p_next=head.p_next->p_next;
+	}
+	//插入一个节点
+	forth.p_next=head.p_next;
+	head.p_next=&forth;
+	//显示所有节点的数据
 	for(p_node=&head;p_node;p_node=p_node->p_next){
 		node* p_tmp=p_node->p_next;
 		if(p_tmp){
