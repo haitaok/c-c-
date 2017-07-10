@@ -1,14 +1,20 @@
 #ifndef __02TREE_H__
 #define __02TREE_H__
-struct tree;
-
+struct node;
+typedef struct tree{
+	struct node *p_root;
+} tree;
 typedef struct node{
 	int num;
-	struct tree* p_left;
-	struct tree* p_right;
+	tree left;
+	tree right;
 }node;
 
-typedef struct tree{
-	node *p_root;
-} tree;
+void deinit(tree *);
+tree* findNum(tree*,int );
+tree* search(tree *,int);
+tree* find_num_order(tree *,int);
+tree* find_num_order2(tree *,int);
+tree *search_in_order(tree *,int);
+void insert_in_order(tree*,int);
 #endif //__02TREE_H__
