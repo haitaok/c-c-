@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+exec sql include sqlca;
+int main(){
+	exec sql begin declare section;
+		char userpasswd[30]="haitao/haitao@xe";
+		int var_x=100;
+		int var_y=200;
+	exec sql end   declare section;
+	exec sql connect:userpasswd;
+	exec sql execute
+		begin
+			getsum(:var_x,:var_y);
+		end;
+	end-exec;
+	printf("var_y=%d\n",var_y);
+	exec sql commit work release;
+}
