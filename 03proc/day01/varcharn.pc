@@ -1,0 +1,16 @@
+#include <stdio.h>
+exec sql include sqlca;
+int main(){
+	char userpasswd[30]="haitao/haitao@xe";
+	varchar var_name[30];
+	/* 连接数据库 */
+	exec sql connect:userpasswd;
+	/* 查询 */
+	exec sql select first_name into var_name from s_emp where id=1;
+	var_name.arr[var_name.len]='\0';
+	printf("var_name=%s hello\n",var_name.arr);
+
+	/* 断开数据库连接 */
+	exec sql commit work release;
+	
+}
