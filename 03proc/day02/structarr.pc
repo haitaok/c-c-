@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+
+exec sql include sqlca;
+void processError(){
+	printf("%s\n",sqlca.sqlerrm.sqlerrmc);
+}
+int main(){
+	exec sql begin declare section;
+		char userpasswd[30]="haitao/haitao@xe";
+		typedef struct emp{
+			int id;
+			char name[30];
+			double salary;
+		} emp;
+		emp emps[50];
+	exec sql end   declare section;
+	exec sql connect:userpasswd;
+	exec sql whenever sqlerror do processError();
+	exec sql drop table tmp_emp;
+	exec sql create table tmp_emp(id number primary key,name varchar2(30),salary number);
+	exec sql select id,first_name,salary into :emps from s_emp;
+	int i=0;
+	int len=sqlca.sqlerrd[2];
+	if(50==len){
+		exec sql insert into tmp_emp values(:emps);
+	}else{
+		for(i=0;i<len;i++){
+			exec  sql insert into tmp_emp values(:emps[i]);
+		}
+		exec sql commit;
+	}
+	
+	
+	
+	exec sql commit work release;
+}
