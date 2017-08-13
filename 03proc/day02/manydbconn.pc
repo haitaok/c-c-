@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+exec sql include sqlca;
+int main(){
+	exec sql begin declare section;
+		char userpasswd[30]="haitao/haitao";
+		char rdbdes[20]="XE";
+		char var_name[30];
+		char db23[20]="db23";
+		char db26[20]="db26";
+	exec sql end   declare section;
+	/* 直接和rdbdes 对应的数据库建立连接 */
+	exec sql connect:userpasswd at:db26 using :rdbdes;
+	exec sql connect:userpasswd at:db23;
+	exec sql at:db23 select first_name into :var_name from s_emp where id=1;
+	printf("db23var_name=%s\n",var_name);
+	exec sql at:db26 select first_name into :var_name from s_emp where id=1;
+	printf("db26var_name=%s\n",var_name);
+	exec sql at:db23 commit work release;
+	exec sql at:db26 commit work release;
+}
+

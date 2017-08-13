@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+exec sql include sqlca;
+int main(){
+	exec sql begin declare section;
+		char userpasswd[30]="haitao/haitao@xe";
+		double salary;
+		int id=0;
+	exec sql end   declare section;
+	exec sql connect:userpasswd;
+	/* mydb26link mydb20dblink */
+	exec sql select salary into :salary from s_emp where id=25;
+	printf("db23 id=25 salary=%lf\n",salary);
+	/* db26 id=25 salary */
+	exec sql select salary into :salary from s_emp@mydb26dblink where id=25;
+	printf("db26 id=25 salary=%lf\n",salary);
+	/* db20 */
+	exec sql select id into :id from tan1_sql@mydb20dblink;
+	printf("db20 id=%d\n",id);
+	
+	exec sql commit work release;
+}
