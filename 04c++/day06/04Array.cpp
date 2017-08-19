@@ -21,7 +21,7 @@ class Array{
 		delete[] temp;
 	}
 	public:
-	Array(int len=5):size(0){
+	explicit Array(int len=5):size(0){//禁止把int变成array
 		this->len = len;
 		/*根据传入的数据分配空间*/
 		data = new int[len];
@@ -91,7 +91,7 @@ class Array{
 };
 
 int main(){
-	Array arr;
+	Array arr(10);//必须满足一个参数构造
 	arr.push_data(9);
 	arr.push_data(5);
 	arr.push_data(2);
