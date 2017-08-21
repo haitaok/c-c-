@@ -18,4 +18,14 @@ int main(){
 	cout << var_c.length()<<endl;
 	cout << var_c.at(0)<<endl;
 	cout << var_c[0]<<endl;
+	/*越界访问的不同表现*/
+	//cout << var_c.at(6)<<endl;
+	cout << var_c[6]<<endl;
+	/*如何把c风格字符串 变成string*/
+	string var_d("hello world");
+	cout << var_d <<endl;
+	var_d+=" hello";
+	/*如何把string  变成c风格字符串*/
+	const char* mystr=var_d.c_str();
+	cout << mystr << endl;
 }
