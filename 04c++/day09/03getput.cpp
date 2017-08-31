@@ -13,7 +13,12 @@ int main(){
 		return -1;
 	}
 	char c;
-	while((c=ifs.get())!=EOF){
+	/*while((c=ifs.get())!=EOF){
+		ofs.put(c);
+	}*/
+	while(ifs){
+		/*不要这么写 会多一个字符*/
+		ifs.get(c);
 		ofs.put(c);
 	}
 	ifs.close();

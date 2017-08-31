@@ -13,9 +13,14 @@ int main(){
 		return -1;
 	}
 	char c;
-	while((c=ifs.get())!=EOF){
+	/*while((c=ifs.get())!=EOF){
+		ofs.put(c);
+	}*/
+	while(ifs){
+		ifs.get(c);
 		ofs.put(c);
 	}
 	ifs.close();
 	ofs.close();
 }
+
