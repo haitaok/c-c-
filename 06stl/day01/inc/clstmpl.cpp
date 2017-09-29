@@ -13,3 +13,11 @@ template<typename T>
 T Comparator<T>::min(void) const{
 	return m_x<m_y?m_x:m_y;
 }
+template <>
+char const* Comparator<char const*>::max(void)const{
+	return strcmp(m_x,m_y)<0?m_y:m_x;
+}
+template <>
+char const* Comparator<char const*>::min(void)const{
+	return strcmp(m_x,m_y)<0?m_x:m_y;
+}
