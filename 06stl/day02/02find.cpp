@@ -74,6 +74,7 @@ public:
 		return lhs>rhs;
 	}
 };
+
 int main(void){
 	int arr[]={12,34,23,17,33,49,25};
 	int* pn=find(arr,arr+7,33);
@@ -104,5 +105,6 @@ int main(void){
 	cout <<endl;
 	sort(lst.begin(),lst.end());
 	cout <<lst<<endl;
+	
 	return 0;
 }
